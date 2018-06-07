@@ -8,9 +8,7 @@ class OAuthController < ApplicationController
                              public_key: ENV['PLAID_PUBLIC_KEY'])
 
   post '/access-token' do
-    request.body.rewind
-    data = JSON.parse request.body.read
-    response = client.item.public_token.exchange(data['public_token'])
+    response = client.item.public_token.exchange(params['public_token'])
     response.access_token
   end
 end

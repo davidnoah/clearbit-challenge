@@ -15,16 +15,19 @@ export async function request({
   method = 'GET',
   queryParams = {},
   body,
-  fileUpload,
-  headers = {
-    'Content-Type': 'application/json'
-  }
+  headers = {}
 }) {
+  let form_data = new FormData();
+
+  for (let key in body) {
+    form_data.append(key, body[key]);
+  }
+
   const endpoint = `${REACT_APP_API_HOST}${path}`;
   const results = await fetch(endpoint, {
     method,
     headers,
-    body: fileUpload ? body : JSON.stringify(body),
+    body: form_data,
     queryParams
   });
 
