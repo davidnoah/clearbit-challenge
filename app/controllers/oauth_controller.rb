@@ -1,4 +1,5 @@
 require 'plaid'
+require 'json'
 
 class OAuthController < ApplicationController
   client = Plaid::Client.new(env: :sandbox,
@@ -6,8 +7,10 @@ class OAuthController < ApplicationController
                              secret: ENV['PLAID_SECRET'],
                              public_key: ENV['PLAID_PUBLIC_KEY'])
 
-  get '/access-token' do
-    response = client.item.public_token.exchange(params['public_token'])
+  post '/access-token' do
+    request.body.rewind
+    data = JSON.parse request.body.read
+    response = client.item.public_token.exchange(data['public_token'])
     response.access_token
   end
 end

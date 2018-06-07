@@ -1,0 +1,36 @@
+const { REACT_APP_API_HOST } = process.env;
+/**
+ * Invokes API gateway
+ *
+ * @param {Object} config              API request config object
+ * @param {string} config.path         Path name to API endpoint
+ * @param {string} config.method       HTTP request method
+ * @param {Object} config.headers      Any corresponding headers sent with the API request
+ * @param {Object} config.queryParams  Any corresponding query parameters sent with the API request
+ * @param {Object} config.body         Body of the request
+ * @return {promise} A promise object that will resolve with a list of services
+*/
+export async function request({
+  path,
+  method = 'GET',
+  queryParams = {},
+  body,
+  fileUpload,
+  headers = {
+    'Content-Type': 'application/json'
+  }
+}) {
+  const endpoint = `${REACT_APP_API_HOST}${path}`;
+  const results = await fetch(endpoint, {
+    method,
+    headers,
+    body: fileUpload ? body : JSON.stringify(body),
+    queryParams
+  });
+
+  if (results.status >= 400) {
+    throw new Error(await results.text());
+  }
+
+  return results.status === 204 ? results.text() : results.json();
+}

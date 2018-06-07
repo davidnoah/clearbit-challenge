@@ -2,5 +2,6 @@
 source "https://rubygems.org"
 
 gem "sinatra"
+gem 'sinatra-cross_origin'
 gem "plaid"
-gem "figaro"
+gem 'dotenv-rails', groups: [:development, :test]
