@@ -1,5 +1,5 @@
 class TransactionController < ApplicationController
-  get '' do
+  get '/:id' do
     'All transactions!'
   end
 end
