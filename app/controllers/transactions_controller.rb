@@ -1,8 +1,9 @@
 require_relative '../clients/plaid_client'
 require_relative '../clients/clearbit_client'
+require 'active_support/all'
 
 class TransactionsController < ApplicationController
-  get '/' do
+  get '' do
     params = request.params
     plaid_client = PlaidClient.new
 
@@ -12,7 +13,7 @@ class TransactionsController < ApplicationController
     return response.to_json unless response['transactions']
 
     transactions = Transaction.process_transactions(response['transactions'])
-    p transactions
-    response.to_json
+
+    transactions.to_json
   end
 end
