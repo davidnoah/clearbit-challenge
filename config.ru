@@ -4,7 +4,6 @@ require 'sinatra/cross_origin'
 require 'json'
 
 require 'dotenv'
-require_relative './app/controllers/application_controller'
 
 Dotenv.load
 
@@ -12,6 +11,6 @@ Dotenv.load
 Dir.glob('./app/{helpers,controllers}/*.rb').each { |file| require file }
 
 # map the controllers to routes
-map('/transactions') { run TransactionController }
-map('/oauth') { run OAuthController }
 map('/') { run ApplicationController }
+map('/oauth') { run OAuthController }
+map('/transactions') { run TransactionsController }
