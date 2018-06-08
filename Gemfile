@@ -5,3 +5,4 @@ gem "sinatra"
 gem 'sinatra-cross_origin'
 gem "plaid"
 gem 'dotenv-rails', groups: [:development, :test]
+gem 'json'

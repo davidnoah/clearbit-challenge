@@ -5,8 +5,8 @@ import { createAccessToken } from '../../utils/OAuthUtils';
 const BankLink = () => {
   const { REACT_APP_PUBLIC_KEY } = process.env;
 
-  const _handleSuccess = (publicKey) => {
-    createAccessToken(publicKey)
+  const _handleSuccess = (publicToken) => {
+    createAccessToken(publicToken)
       .then(res => {
         console.log(res);
       })

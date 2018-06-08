@@ -1,6 +1,8 @@
 # config.ru
 require 'sinatra/base'
 require 'sinatra/cross_origin'
+require 'json'
+
 require 'dotenv'
 require_relative './app/controllers/application_controller'
 
