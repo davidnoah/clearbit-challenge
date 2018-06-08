@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import BankLink from '../../components/PlaidLink';
+import { history } from '../../redux/createStore';
+import { Router } from 'react-router';
+import Routes from '../../routes'
 
 import './App.css';
 
@@ -7,7 +9,9 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <BankLink />
+        <Router history={ history }>
+          <Routes />
+        </Router>
       </div>
     );
   }

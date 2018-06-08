@@ -1,14 +1,17 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router';
+import { func, object } from 'prop-types';
 import PlaidLink from 'react-plaid-link';
-import { createAccessToken } from '../../utils/OAuthUtils';
+import { createAccessToken } from '../../redux/actions/OAuthActions';
 
-const BankLink = () => {
+const BankLink = ({ createAccessToken, history }) => {
   const { REACT_APP_PUBLIC_KEY } = process.env;
 
   const _handleSuccess = (publicToken) => {
     createAccessToken(publicToken)
       .then(res => {
-        console.log(res);
+        history.push('/transactions');
       })
   };
 
@@ -26,4 +29,16 @@ const BankLink = () => {
   )
 };
 
-export default BankLink;
+BankLink.propTypes = {
+  createAccessToken: func,
+  history: object
+};
+
+const mapDispatchToProps = {
+  createAccessToken
+};
+
+export default withRouter(connect(
+  null,
+  mapDispatchToProps
+)(BankLink));
