@@ -5,6 +5,21 @@ body {
   background-color: #ebecf1;
 }
 
+.btn--small {
+  background-color: #90c015 !important;
+  font-size: 0.8rem;
+  line-height: 1.42857143;
+  padding: .358em 2em;
+  min-width: 0;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-family: museo-sans, sans-serif;
+  font-weight: 400;
+  transition: background .2s ease-in-out,color .2s ease-in-out;
+  border-radius: .5rem;
+}
+
 .App {
   text-align: center;
 }

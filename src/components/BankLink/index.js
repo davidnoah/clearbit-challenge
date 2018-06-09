@@ -10,23 +10,24 @@ const BankLink = ({ createAccessToken, history }) => {
 
   const _handleSuccess = (publicToken) => {
     createAccessToken(publicToken)
-      .then(res => {
+      .then(() => {
         history.push('/transactions');
-      })
+      });
   };
 
   return (
     <PlaidLink
       clientName="ClearbitIntegration"
       env="sandbox"
-      product={ ["auth", "transactions"]}
+      className="btn--small"
+      product={ ['auth', 'transactions'] }
       publicKey={ REACT_APP_PUBLIC_KEY }
       onExit={ () => { } }
       onSuccess={ _handleSuccess }
     >
       Connect your bank
     </PlaidLink >
-  )
+  );
 };
 
 BankLink.propTypes = {

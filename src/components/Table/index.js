@@ -31,7 +31,7 @@ class Table extends React.Component {
                 className="table__tr"
                 key={ rowIndex }
               >
-                { Object.keys(row).map(key => {
+                { Object.keys(row).map((key, index) => {
                   let value = row[key];
 
                   if (key === 'logo' && value) {
@@ -43,7 +43,7 @@ class Table extends React.Component {
                   }
 
                   return (
-                    <td className="table__td">
+                    <td className="table__td" key={ `td${index}` }>
                       {value || '\u2014' }
                     </td>
                   );
