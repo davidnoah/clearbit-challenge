@@ -1,5 +1,6 @@
 import React from 'react';
-import { array, func } from 'prop-types';
+import { array } from 'prop-types';
+import { toTitleCase } from '../../utils/stringManipulation';
 
 import './Table.css';
 
@@ -17,7 +18,7 @@ class Table extends React.Component {
                   className="table__th"
                   key={ `col${index}` }
                 >
-                  { column }
+                  { toTitleCase(column) }
                 </th>
               ))
             }
@@ -33,13 +34,17 @@ class Table extends React.Component {
                 { Object.keys(row).map(key => {
                   let value = row[key];
 
-                  if (key === 'logo') {
+                  if (key === 'logo' && value) {
                     value = <img src={ row[key] } alt="transaction-logo" />;
+                  }
+
+                  if (key === 'is_recurring') {
+                    value = row[key] ? 'RECURRING' : '';
                   }
 
                   return (
                     <td className="table__td">
-                      { value }
+                      {value || '\u2014' }
                     </td>
                   );
                 }) }
@@ -53,7 +58,6 @@ class Table extends React.Component {
 
 Table.propTypes = {
   columns: array,
-  onRowClick: func,
   rows: array
 };
 
