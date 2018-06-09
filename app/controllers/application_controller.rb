@@ -1,4 +1,7 @@
 class ApplicationController < Sinatra::Base
+  set :raise_errors, false
+  set :show_exceptions, false
+
   configure :production, :development do
     enable :logging
   end

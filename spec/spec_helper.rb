@@ -44,6 +44,9 @@ RSpec.configure do |config|
   # triggering implicit auto-inclusion in groups with matching metadata.
   config.shared_context_metadata_behavior = :apply_to_host_groups
 
+  # Use color in STDOUT
+  config.color = true
+
   # Use color not only in STDOUT but also in pagers and files
   config.tty = true
 

@@ -9,14 +9,20 @@ class PlaidClient
   end
 
   def exchange_public_token(public_token)
-    @client.item.public_token.exchange(public_token)
+    begin
+      response = @client.item.public_token.exchange(public_token)
+    rescue Plaid::InvalidInputError => error
+      response = { error: { message: error.error_message } }
+    end
+
+    response
   end
 
   def get_all_transactions(access_token, start_date, end_date)
     begin
-      response = @client.transactions.get(access_token, start_date, end_date)
+      response = @client.transactions.get(access_token, start_date, end_date).access_token
     rescue Plaid::ItemError => error
-      halt error.error_code, error.error_message
+      response = { error: { message: error.error_message } }
     end
 
     response
