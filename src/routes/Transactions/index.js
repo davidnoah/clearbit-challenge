@@ -1,7 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { func, object } from 'prop-types';
+import { func, object, string, array } from 'prop-types';
 import { getTransactions } from '../../redux/actions/TransactionActions';
+import Table from '../../components/Table';
 
 class Transactions extends React.Component {
   componentDidMount() {
@@ -18,22 +19,26 @@ class Transactions extends React.Component {
 
   render() {
     const { transactions } = this.props;
+    const columns = transactions.length && [...Object.keys(transactions[0])];
 
     return (
       <div>
-        { transactions.map((transaction, index) => (
-          <div className="transaction__container" key={ `transaction ${index}` }>
-              { transaction.name }
-          </div>
-        )) }
+        { transactions.length ?
+          <Table
+            rows={ transactions }
+            columns={ columns }
+          />
+          : null }
       </div>
     );
   }
-};
+}
 
 Transactions.propTypes = {
   getTransactions: func,
-  history: object
+  history: object,
+  accessToken: string,
+  transactions: array
 };
 
 const mapStateToProps = state => ({

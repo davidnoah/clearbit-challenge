@@ -8,4 +8,4 @@ export const createAccessToken = (public_token) => (
       public_token
     }
   })
-)
+);

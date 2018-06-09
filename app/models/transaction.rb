@@ -1,13 +1,14 @@
 require_relative '../clients/clearbit_client'
 
 class Transaction
-  attr_accessor :domain, :is_recurring
+  attr_accessor :domain, :is_recurring, :logo
   attr_reader :name, :date, :amount
 
   def initialize(transaction)
     @name = transaction['name']
     @date = transaction['date']
     @amount = transaction['amount']
+    @logo = nil
     @domain = nil
     @is_recurring = false
   end
@@ -22,7 +23,10 @@ class Transaction
       date = DateTime.parse(trans.date)
 
       domains[trans.name] ||= clearbit_client.name_to_domain(trans.name)
-      trans.domain = domains[trans.name]
+      if domains[trans.name]
+        trans.domain = domains[trans.name]['domain']
+        trans.logo = domains[trans.name]['logo']
+      end
 
       transaction_identifier = "#{trans.name}_#{date.day}_#{trans.amount}"
       

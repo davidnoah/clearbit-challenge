@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { history } from '../../redux/createStore';
 import { Router } from 'react-router';
-import Routes from '../../routes'
+import Routes from '../../routes';
 
 import './App.css';
 
