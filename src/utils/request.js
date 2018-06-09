@@ -23,11 +23,15 @@ export async function request({
     form_data.append(key, body[key]);
   }
 
-  const endpoint = `${REACT_APP_API_HOST}${path}`;
+  const endpoint = new URL(`${REACT_APP_API_HOST}${path}`);
+
+  Object.keys(queryParams)
+    .forEach(key => endpoint.searchParams.append(key, queryParams[key]));
+
   const results = await fetch(endpoint, {
     method,
     headers,
-    body: form_data,
+    body: body && form_data,
     queryParams
   });
 
