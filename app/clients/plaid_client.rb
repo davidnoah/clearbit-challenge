@@ -15,9 +15,8 @@ class PlaidClient
   def get_all_transactions(access_token, start_date, end_date)
     begin
       response = @client.transactions.get(access_token, start_date, end_date)
-      response["status_code"] = 200
     rescue Plaid::ItemError => error
-      response = { status_code: error.error_code, message: error.error_message}
+      halt error.error_code, error.error_message
     end
 
     response

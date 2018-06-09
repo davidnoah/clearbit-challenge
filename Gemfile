@@ -1,10 +1,19 @@
 # frozen_string_literal: true
 source "https://rubygems.org"
 
+# Third party SDKs
+gem 'clearbit'
+gem 'plaid'
+
+# Sinatra and response
 gem 'sinatra'
 gem 'sinatra-cross_origin'
-gem 'plaid'
-gem 'dotenv-rails', groups: [:development, :test]
 gem 'json'
-gem 'clearbit'
 gem "sinatra-param"
+
+# Testing
+gem 'rack-test'
+gem 'rspec'
+
+# Environment variables
+gem 'dotenv-rails', groups: [:development, :test]

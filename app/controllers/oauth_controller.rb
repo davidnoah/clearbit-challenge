@@ -1,6 +1,13 @@
 require_relative '../clients/plaid_client'
 
 class OAuthController < ApplicationController
+  helpers Sinatra::Param
+  helpers ApplicationHelper
+
+  before do
+    content_type :json
+  end
+
   post '/access-token' do
     param :access_token,
           String,

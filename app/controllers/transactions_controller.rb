@@ -4,6 +4,7 @@ require 'active_support/all'
 
 class TransactionsController < ApplicationController
   helpers Sinatra::Param
+  helpers ApplicationHelper
 
   before do
     content_type :json
