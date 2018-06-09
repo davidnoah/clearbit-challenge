@@ -4,6 +4,8 @@ import { func, object, string, array } from 'prop-types';
 import { getTransactions } from '../../redux/actions/TransactionActions';
 import Table from '../../components/Table';
 
+import './Transactions.css';
+
 class Transactions extends React.Component {
   componentDidMount() {
     const { accessToken, history } = this.props;
@@ -22,7 +24,7 @@ class Transactions extends React.Component {
     const columns = transactions.length && [...Object.keys(transactions[0])];
 
     return (
-      <div>
+      <div className="transactionstable">
         { transactions.length ?
           <Table
             rows={ transactions }

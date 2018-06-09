@@ -1,6 +1,8 @@
 import React from 'react';
 import { array, func } from 'prop-types';
 
+import './Table.css';
+
 class Table extends React.Component {
   render() {
     const { columns, rows } = this.props;
@@ -15,7 +17,7 @@ class Table extends React.Component {
                   className="table__th"
                   key={ `col${index}` }
                 >
-                  { column.name }
+                  { column }
                 </th>
               ))
             }
@@ -32,7 +34,7 @@ class Table extends React.Component {
                   let value = row[key];
 
                   if (key === 'logo') {
-                    value = <img src={ row[key] } />;
+                    value = <img src={ row[key] } alt="transaction-logo" />;
                   }
 
                   return (
