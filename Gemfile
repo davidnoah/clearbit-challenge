@@ -7,3 +7,4 @@ gem 'plaid'
 gem 'dotenv-rails', groups: [:development, :test]
 gem 'json'
 gem 'clearbit'
+gem "sinatra-param"

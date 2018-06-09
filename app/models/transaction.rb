@@ -16,11 +16,10 @@ class Transaction
   def self.process_transactions(transactions)
     domains = {}
     clearbit_client = ClearbitClient.new
-    last_occurance_month = {}
+    last_occurance = {}
 
     processed_transactions = transactions.map do |transaction|
       trans = Transaction.new(transaction)
-      date = DateTime.parse(trans.date)
 
       domains[trans.name] ||= clearbit_client.name_to_domain(trans.name)
       if domains[trans.name]
@@ -28,27 +27,18 @@ class Transaction
         trans.logo = domains[trans.name]['logo']
       end
 
-      transaction_identifier = "#{trans.name}_#{date.day}_#{trans.amount}"
-      
-      if last_occurance_month[transaction_identifier] == date.month + 1
-        trans.is_recurring = true
-      end
-
-      last_occurance_month[transaction_identifier] = date.month
-
-      trans
-    end
-
-    last_occurance_month = {}
-    processed_transactions.reverse_each do |trans|
       date = DateTime.parse(trans.date)
       transaction_identifier = "#{trans.name}_#{date.day}_#{trans.amount}"
 
-      if last_occurance_month[transaction_identifier] == date.month - 1
+      last_trans = last_occurance[transaction_identifier]
+      if last_trans && DateTime.parse(last_trans.date).strftime("%Y-%m") == date.next_month.strftime("%Y-%m")
+        last_trans.is_recurring = true
         trans.is_recurring = true
       end
 
-      last_occurance_month[transaction_identifier] = date.month
+      last_occurance[transaction_identifier] = trans
+
+      trans
     end
 
     processed_transactions

@@ -3,7 +3,27 @@ require_relative '../clients/clearbit_client'
 require 'active_support/all'
 
 class TransactionsController < ApplicationController
+  helpers Sinatra::Param
+  include TransactionHelpers
+
+  before do
+    content_type :json
+  end
+
   get '' do
+    param :access_token,
+          String,
+          required: true,
+          message: param_vaidation_error_message('access_token')
+    param :start_date,
+          String,
+          required: true,
+          message: param_vaidation_error_message('start_date')
+    param :end_date,
+          String,
+          required: true,
+          message: param_vaidation_error_message('end_date')
+
     params = request.params
     plaid_client = PlaidClient.new
 
