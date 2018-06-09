@@ -35,7 +35,7 @@ class Transactions extends React.Component {
   async queryTransactions() {
     const startDate = this.state.startDate.format('YYYY-MM-DD');
     const endDate = this.state.endDate.format('YYYY-MM-DD');
-    console.log(startDate, endDate);
+
     this.queryWithLoader(() => (
       this.props.getTransactions(this.props.accessToken, startDate, endDate)
     ));
