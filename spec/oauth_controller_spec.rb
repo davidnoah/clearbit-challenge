@@ -19,7 +19,7 @@ describe "OAuthController" do
     JSON.parse(last_response.body)
   end
 
-  it "Sends Bad Request on improper params" do
+  it "Sends Bad Request when improper params" do
     body = get_post_response(nil)
 
     expect(last_response.status).to eq(400)
@@ -28,7 +28,7 @@ describe "OAuthController" do
   end
 
   it "Halts request when Plaid client throws error" do
-    body = get_post_response("bad_access_token-kwejbwkjceb")
+    body = get_post_response("bad_public_token-kwejbwkjceb")
   
     expect(last_response.status).to eq(500)
     expect(body["message"]).to eq("provided public token is in an invalid format. expected format: public-<environment>-<identifier>")
@@ -36,7 +36,7 @@ describe "OAuthController" do
 
   it "Returns proper response" do
     allow_any_instance_of(PlaidClient).to receive(:exchange_public_token).and_return(PlaidResponseMock.new('some_access_token'))
-    body = get_post_response("good_access_token-kwejbwkjceb")
+    body = get_post_response("good_public_token-kwejbwkjceb")
 
     expect(last_response.status).to eq(200)
     expect(body["access_token"]).to eq('some_access_token')

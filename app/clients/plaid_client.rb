@@ -20,8 +20,8 @@ class PlaidClient
 
   def get_all_transactions(access_token, start_date, end_date)
     begin
-      response = @client.transactions.get(access_token, start_date, end_date).access_token
-    rescue Plaid::ItemError => error
+      response = @client.transactions.get(access_token, start_date, end_date)
+    rescue Plaid::InvalidInputError => error
       response = { error: { message: error.error_message } }
     end
 

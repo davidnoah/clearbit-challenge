@@ -107,6 +107,7 @@ DEPENDENCIES
   plaid
   rack-test
   rspec
+  rspec-mocks
   sinatra
   sinatra-cross_origin
   sinatra-param

@@ -14,6 +14,7 @@ gem "sinatra-param"
 # Testing
 gem 'rack-test'
 gem 'rspec'
+gem 'rspec-mocks'
 
 # Environment variables
 gem 'dotenv-rails', groups: [:development, :test]
