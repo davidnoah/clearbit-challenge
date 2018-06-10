@@ -10,6 +10,12 @@ class TransactionsController < ApplicationController
     content_type :json
   end
 
+  # Returns a list of transactions processed through the Clearbit API and
+  # assessed for recurring payments
+  # @param {String} access_token - An access_token provided by the Plaid API
+  # @param {String} start_date - Transaction query start date formatted YYYY-MM-DD
+  # @param {String} end_date - Transaction query start date formatted YYYY-MM-DD
+  # return {Array} - A json array with a list of transaction objects
   get '' do
     param :access_token,
           String,

@@ -8,6 +8,9 @@ class OAuthController < ApplicationController
     content_type :json
   end
 
+  # Exchanges a public_token for an access_token throuh the Plaid API
+  # @param {String} public_token - Token provided by the Plaid API after loging in to your bank account
+  # return {Object} - A json object with an access_token
   post '/access-token' do
     param :public_token,
           String,
