@@ -1,5 +1,6 @@
 require 'plaid'
 
+# Client class that handles initialization and queries to the Plaid API
 class PlaidClient
   def initialize
       @client = Plaid::Client.new(env: :sandbox,
@@ -15,7 +16,7 @@ class PlaidClient
     begin
       response = @client.item.public_token.exchange(public_token)
     rescue Plaid::InvalidInputError => error
-      response = { error: { message: error.error_message } }
+      response = { 'error' => { 'message' => error.error_message } }
     end
 
     response
@@ -30,7 +31,7 @@ class PlaidClient
     begin
       response = @client.transactions.get(access_token, start_date, end_date)
     rescue Plaid::InvalidInputError => error
-      response = { error: { message: error.error_message } }
+      response = { 'error' => { 'message' => error.error_message } }
     end
 
     response

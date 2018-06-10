@@ -36,7 +36,7 @@ class TransactionsController < ApplicationController
     response = plaid_client.get_all_transactions(params["access_token"], 
                                                  params["start_date"], 
                                                  params["end_date"])
-    halt 500, response[:error].to_json if response[:error]
+    halt 500, response['error'].to_json if response['error']
 
     transactions = Transaction.process_transactions(response['transactions'])
 

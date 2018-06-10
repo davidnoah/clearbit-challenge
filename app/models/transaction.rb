@@ -30,9 +30,12 @@ class Transaction
       trans = create_new_transaction(transaction)
 
       # Check to see if the company domain has been processed already, if not make a request to 
-      # the Clearbit name to domain API. Then set the domain and logo instance variables
-      domains[trans.name] ||= clearbit_client.name_to_domain(trans.name)
-      if domains[trans.name]
+      # the Clearbit name to domain API. Then set the domain and logo instance variables. if the
+      # Clearbit API returns nil, set the domain hash to an empty object. This ensures that a request
+      #  to Clearbit is never made twice for the same company
+      domains[trans.name] ||= (clearbit_client.name_to_domain(trans.name) || {})
+
+      if domains[trans.name]['domain']
         trans.domain = domains[trans.name]['domain']
         trans.logo = domains[trans.name]['logo']
       end
