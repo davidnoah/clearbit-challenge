@@ -22,7 +22,7 @@ I have built a small application in Ruby/Sinatra and React/Redux. This app allow
 
 For the scope of the application, a full React/Redux frontend is overkill. That being said, I implemented the frontend like this to highlight my skills in React/Redux.
 
-Also, the .env file has been checked in to Github. I would have normally put this file behind an ansible-vault encryption or .gitignored the .env file all together
+Also, the .env file has been checked in to Github. I would have normally put this file behind an ansible-vault encryption or .gitignored the .env file all together.
 
 ---
 ### Server
@@ -83,5 +83,23 @@ This will be a very important optimization. Caching recent transactions. One can
 - Add limit and offset paramters to the tranaction query
 
 Very large queries will take some time. If pagination was implemented into the API, it would prevent the frontend from running slow on large queries.
+
+---
+## React/Redux Frontend
+
+Normally I would like to separate the client application and API into two separate repositories, but for the sake of ease of use, I decided to keep them together under one roof. Also, I used component based styling. Every component imports a .css file.
+
+I documented this code using JSDoc (http://usejsdoc.org/).
+
+### State
+
+```js
+  {
+    oauth: {
+      accessToken: "A Plaid access token"
+    },
+    transactions: []
+  }
+```
 
 

@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 
 // Route Components
@@ -20,7 +20,7 @@ const Routes = () => {
         />
       </Switch>
     </div>
-  )
-}
+  );
+};
 
 export default Routes;
