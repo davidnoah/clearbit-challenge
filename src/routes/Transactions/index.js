@@ -82,15 +82,21 @@ class Transactions extends React.Component {
     return (
       <div className="transactionstable">
         <div className="transactiontable__dashboard">
-          <DatePicker
+          <div className="form__field">
+            <label className="form__label">START DATE</label>
+            <DatePicker
 
-            selected={ this.state.startDate }
-            onChange={ (date) => this.handleDateChange('startDate', date) }
-          />
-          <DatePicker
-            selected={ this.state.endDate }
-            onChange={ (date) => this.handleDateChange('endDate', date) }
-          />
+              selected={ this.state.startDate }
+              onChange={ (date) => this.handleDateChange('startDate', date) }
+            />
+          </div>
+          <div className="form__field">
+            <label className="form__label">END DATE</label>
+            <DatePicker
+              selected={ this.state.endDate }
+              onChange={ (date) => this.handleDateChange('endDate', date) }
+            />
+          </div>
           <button className="btn--small" onClick={ this.queryTransactions } >Get Transactions</button>
         </div>
         { isLoading ?

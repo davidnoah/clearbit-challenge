@@ -38,7 +38,7 @@ class Table extends React.Component {
               <tr
                 className="table__tr"
                 key={ rowIndex }
-                onClick={ () => onRowClick(`http://www.${row.domain}`) }
+                onClick={ () => row.domain && onRowClick(`http://www.${row.domain}`) }
               >
                 { Object.keys(row).map((key, index) => {
                   let value = row[key];
