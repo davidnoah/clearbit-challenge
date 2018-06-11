@@ -24,8 +24,6 @@ I have built a small application in Ruby/Sinatra and React/Redux. This app allow
 
 For the scope of the application, a full React/Redux frontend is overkill. That being said, I implemented the frontend like this to highlight my skills in React/Redux.
 
-Also, the .env file has been checked in to Github. I would have normally put this file behind an ansible-vault encryption or .gitignored the .env file all together.
-
 ---
 ### Server
 The app uses Ruby/Sinatra on the server-side and is built in a Model View Controller architecture. I knew that I could break up the functionality of this app in to two endpoints.
