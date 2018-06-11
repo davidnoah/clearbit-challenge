@@ -6,6 +6,7 @@ A small app that processes bank transactions through the Clearbit name to domain
 
 1. `git clone` this project
 2. Navigate to directory
+3. Create `.env` file at the root level of the app and add all necessary keys
 3. Run `yarn install` or `npm install`
 4. Run `bundle install`
 5. Run `rackup`
