@@ -25,7 +25,7 @@ class Transactions extends React.Component {
 
     this.state = {
       isLoading: false,
-      startDate: moment().subtract(7, 'days'),
+      startDate: moment().subtract(5, 'months'),
       endDate: moment()
     };
 
@@ -69,6 +69,11 @@ class Transactions extends React.Component {
     this.setState({ [key]: date });
   }
 
+  onRowClick(url) {
+    const newWindow = window.open(url, '_blank');
+    newWindow.focus();
+  }
+
   render() {
     const { transactions } = this.props;
     const { isLoading } = this.state;
@@ -93,6 +98,7 @@ class Transactions extends React.Component {
           <Table
             rows={ transactions }
             columns={ columns }
+            onRowClick={ this.onRowClick }
           /> }
       </div>
     );

@@ -1,5 +1,5 @@
 import React from 'react';
-import { array } from 'prop-types';
+import { array, func } from 'prop-types';
 import { snakeToTitleCase } from '../../utils/stringManipulation';
 
 import './Table.css';
@@ -9,11 +9,12 @@ import './Table.css';
  *
  * @param {Array} columns List of column names
  * @param {Array} rows List of row objects
+ * @param {Function} onRowClick Action when row is clicked
  * @return {React.Component} A stateless React table component
 */
 class Table extends React.Component {
   render() {
-    const { columns, rows } = this.props;
+    const { columns, rows, onRowClick } = this.props;
 
     return (
       <table className="table">
@@ -37,6 +38,7 @@ class Table extends React.Component {
               <tr
                 className="table__tr"
                 key={ rowIndex }
+                onClick={ () => onRowClick(`http://www.${row.domain}`) }
               >
                 { Object.keys(row).map((key, index) => {
                   let value = row[key];
@@ -65,7 +67,8 @@ class Table extends React.Component {
 
 Table.propTypes = {
   columns: array,
-  rows: array
+  rows: array,
+  onRowClick: func
 };
 
 export default Table;
