@@ -89,7 +89,7 @@ Very large queries will take some time. If pagination was implemented into the A
 
 Normally I would like to separate the client application and API into two separate repositories, but for the sake of ease of use, I decided to keep them together under one roof. Also, I used component based styling. Every component imports a .css file.
 
-I documented this code using JSDoc (http://usejsdoc.org/).
+I documented this code using JSDoc (http://usejsdoc.org/) and ESLint was used to maintain code structure and clarity.
 
 ### State
 
