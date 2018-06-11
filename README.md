@@ -11,6 +11,8 @@ A small app that processes bank transactions through the Clearbit name to domain
 5. Run `rackup`
 6. In a separate tab, run `yarn start` or `npm start`
 
+Run the tests! Run `rspec spec`
+
 When logging in to a bank use these credentials:
 
   username: `user_good`

@@ -3,7 +3,6 @@ require "rack/test"
 
 OUTER_APP = Rack::Builder.parse_file("config.ru").first
 
-
 describe "TransactionsController" do
   include Rack::Test::Methods
 
