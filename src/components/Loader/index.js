@@ -2,7 +2,7 @@ import React from 'react';
 import './Loader.css';
 
 /**
- * Renders the loader component
+ * Renders a loader component
  * @returns {React.Component}  Returns a stateless react component
  */
 const Loader = () => (

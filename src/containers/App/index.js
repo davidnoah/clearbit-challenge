@@ -5,6 +5,10 @@ import Routes from '../../routes';
 
 import './App.css';
 
+/**
+ * Renders an App container
+ * @returns {React.Component}  Returns a stateless react component
+ */
 class App extends Component {
   render() {
     return (

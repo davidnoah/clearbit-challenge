@@ -1,9 +1,16 @@
 import React from 'react';
 import { array } from 'prop-types';
-import { toTitleCase } from '../../utils/stringManipulation';
+import { snakeToTitleCase } from '../../utils/stringManipulation';
 
 import './Table.css';
 
+/**
+ * Returns an action creator with a list of transactions
+ *
+ * @param {Array} columns List of column names
+ * @param {Array} rows List of row objects
+ * @return {React.Component} A stateless React table component
+*/
 class Table extends React.Component {
   render() {
     const { columns, rows } = this.props;
@@ -18,7 +25,7 @@ class Table extends React.Component {
                   className="table__th"
                   key={ `col${index}` }
                 >
-                  { toTitleCase(column) }
+                  { snakeToTitleCase(column) }
                 </th>
               ))
             }
