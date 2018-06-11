@@ -11,6 +11,14 @@ import Loader from '../../components/Loader';
 import './Transactions.css';
 import 'react-datepicker/dist/react-datepicker.css';
 
+/**
+ * Renders a Transactions route
+ * @param {Function} getTransactions Action to call the GET /transactions API and add transactions to state
+ * @param {Object} history React router's history object
+ * @param {String} accessToken Plaid's accessToken to make requests to the Plaid API
+ * @param {Array} transactions An array of transactions to display
+ * @returns {React.Component} Returns a react component
+ */
 class Transactions extends React.Component {
   constructor(props) {
     super(props);

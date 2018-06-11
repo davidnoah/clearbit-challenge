@@ -8,7 +8,7 @@ const { REACT_APP_API_HOST } = process.env;
  * @param {Object} config.headers      Any corresponding headers sent with the API request
  * @param {Object} config.queryParams  Any corresponding query parameters sent with the API request
  * @param {Object} config.body         Body of the request
- * @return {promise} A promise object that will resolve with a list of services
+ * @return {promise} A promise object
 */
 export async function request({
   path,
